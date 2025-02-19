@@ -1,0 +1,118 @@
+# WindSurf Rules for Next.js 15 + Sanity Portfolio Project
+
+[Project Structure]
+1. Use Next.js 15 app router structure
+2. Organize components in /src/components with atomic design pattern
+3. Create /src/lib for utilities and helpers
+4. Keep styles in /src/styles (Tailwind + CSS Modules)
+5. Sanity studio in /src/sanity directory
+6. Separate content types for blog, products, and projects in Sanity schemas
+7. Use TypeScript interfaces for all Sanity documents
+
+[Code Quality]
+1. TypeScript strict mode enabled
+2. ESLint with Next.js, accessibility, and TypeScript plugins
+3. Prettier formatting enforced
+4. Husky pre-commit hooks for linting and type checking
+5. All components must be functional with TypeScript types
+6. PropTypes forbidden - TypeScript interfaces only
+7. Arrow functions preferred for components
+
+[Dependencies]
+required:
+- bun ^1.2.0
+- next ^15.0.0
+- react ^19.0.0
+- typescript ^5.0.0
+- @sanity/client ^6.15.0
+- tailwindcss ^3.4.0
+- @headlessui/react ^2.0.0
+- zod ^3.22.0
+- motion ^10.0.0
+- date-fns ^3.6.0
+- lucide-react ^0.300.0
+- zustand ^4.5.0
+
+dev:
+- @types/react ^18.2.0
+- @types/node ^20.0.0
+- eslint ^8.0.0
+- eslint-plugin-jsx-a11y ^6.7.0
+- eslint-plugin-react-hooks ^4.6.0
+- @sanity/cli ^6.15.0
+
+[Sanity Setup]
+1. Content types required:
+   - BlogPost (title, slug, content, excerpt, coverImage, date)
+   - Product (name, price, description, images, category)
+   - Project (title, slug, description, demoUrl, repoUrl, technologies)
+2. GROQ queries must be validated with Zod
+3. Implement preview mode for draft content
+4. Use @sanity/image-url for responsive images
+5. Portable Text serialization in React components
+6. Environment variables prefixed with NEXT_PUBLIC_SANITY_
+
+[Theming System]
+1. CSS Variables for theme colors
+2. Tailwind dark mode: class strategy
+3. Theme provider component using Zustand
+4. Persist theme preference in localStorage
+5. Accessible theme toggle button
+6. All components must work with both themes
+7. No inline color definitions - use theme variables
+
+[Performance]
+1. Dynamic imports for heavy components
+2. Static generation for blog posts and products
+3. Incremental Static Regeneration (ISR) for content updates
+4. Next.js Image component for all images
+5. Sanity image CDN with auto-format and compression
+6. Code splitting for routes and components
+7. Bundle size monitoring with @next/bundle-analyzer
+
+[Accessibility]
+1. Semantic HTML5 elements required
+2. ARIA labels for interactive elements
+3. Keyboard navigation testing
+4. Focus management for dialogs
+5. Color contrast ratio >= 4.5:1
+6. Screen reader testing workflow
+7. axe-core integration in development
+
+[Git Rules]
+1. Conventional commits enforced
+2. Commit message format: type(scope): description
+3. Pre-commit hooks:
+   - lint:fix
+   - type-check
+   - prettier:format
+4. Branch naming:
+   - feature/description
+   - fix/description
+   - docs/description
+5. .gitignore must include:
+   - .env
+   - node_modules
+   - .sanity
+   - .next
+
+[Validation]
+1. Run `bun run check:types` before deployment
+2. Run `bun run check:lint` in CI pipeline
+3. Lighthouse score thresholds:
+   - Performance: 90+
+   - Accessibility: 95+
+   - Best Practices: 90+
+   - SEO: 90+
+4. End-to-end tests for critical user flows
+5. Broken link checker in build process
+
+[Documentation]
+1. JSDoc comments for complex functions
+2. README.md with:
+   - Project setup
+   - Sanity content guide
+   - Deployment instructions
+   - Theme development docs
+3. TypeDoc for core utilities
+4. Error code reference documentation
